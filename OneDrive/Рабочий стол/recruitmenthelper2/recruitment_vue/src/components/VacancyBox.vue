@@ -1,18 +1,26 @@
 <template>
     <div class="box_vacancy">
-      <h3 class="vac_data">{{ vacancy.name }}</h3>
-      <p>{{ vacancy.description }}</p>
-      <!-- Добавьте другие поля, которые вы хотите отобразить здесь -->
+    <!-- <a :href="`../recruitmenthelper/recruitmenthelper/web/SWP/vacancies/${vacancy.id}`">
+        <div class="vac_data">
+            <p>{{ vacancy.comment }}</p>
+        </div>
+    </a> -->
+    <RouterLink :to="`/vacancies/${vacancy.id}/`">
+      <div class="vac_data">
+            <p>{{ vacancy.comment }}</p>
+        </div>
+      </RouterLink>
     </div>
   </template>
   
   <script lang="ts">
   import { defineComponent, PropType } from 'vue';
+  import {RouterLink} from 'vue-router';
   
   interface Vacancy {
     id: number;
     name: string;
-    description: string;
+    comment: string;
     // добавьте другие поля, если необходимо
   }
   
@@ -24,20 +32,33 @@
         type: Object as PropType<Vacancy>,
         required: true
       }
+    },
+    components:{
+      RouterLink
     }
   });
   </script>
   
   <style scoped>
   .box_vacancy {
-    padding: 20px;
-    border: 1px solid #ddd;
+    padding: 0px;
+    border: 1px solid #494949;
     margin-bottom: 20px;
-    background-color: #fff;
+    background-color: #494949;
+    border-radius: 7px;
+    width:470px;
+    display: flex;
+    justify-content: center;
+    
   }
   
   .vac_data {
-    color: blue;
+    color: white;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    
   }
   </style>
   
